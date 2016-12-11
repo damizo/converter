@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<link rel=stylesheet href="styles/main.css" type="text/css" media=screen>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+<script src="ng-file-upload-shim.min.js"></script>
+<script src="ng-file-upload.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<!--    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
+    <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>-->
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-cookies.js"></script>
+
+</head>
+<body ng-app="app">
+
+<md-encodedContent class="md-padding">
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+    <md-nav-item md-nav-href="#home" name="home">HOME</md-nav-item>
+    <md-nav-item md-nav-href="#image" name="image">IMAGE MANAGER</md-nav-item>
+      <md-nav-item md-nav-href="#contact" name="contact">CONTACT</md-nav-item>
+    </md-nav-bar>
+    <div class="ext-encodedContent">
+      <div ng-view>
+
+		</div>
+    </div>
+  </md-encodedContent>
+
+<script src="https:/ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="app.js"></script>
+<script src="components/directives.js"></script>
+<script src="controller/imageController.js"></script>
+<script src="controller/homeController.js"></script>
+<script src="controller/contactController.js"></script>
+<script src="service/providerService.js"></script>
+<script src="service/fileService.js"></script>
+<script src="service/validationService.js"></script>
+<script src="service/emailService.js"></script>
+<script src="assets/js/custom-file-input.js"></script>
+<script src="node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
+<script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script>
+<script src="node_modules\angular-audio\app\angular.audio.js"></script>
+<script src="locales/locale-en.json"></script>
+<script src="assets/js/base64-binary.js"></script>
+<script src="assets/js/audio.min.js"></script>
+<script src="styles/audio.css"></script>
+
+<script>
+   (function(){
+      emailjs.init("user_xQkLR1r0qcbaAy7JBv6Rt");
+   })();
+</script>
+</body>
+</html>
+

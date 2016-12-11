@@ -1,0 +1,54 @@
+﻿<div ng-controller="contactController" ng-init="getCookie()">
+
+<div class="divide-40"></div>
+
+<div class="center intro">
+<h2>
+If you have any questions for me, then just fill form below and send me an email!
+</h2>
+</div>
+
+<div class="divide-40"></div>
+
+<div>
+
+
+<div layout-xs="row">
+<div class="center-div" flex="35">
+    <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+      <label>Name</label>
+      <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+      <input id="name_form" ng-keydown="check()" ng-blur="check()" ng-disabled="vm.spam_block" ng-model="vm.name" ng-required="true" type="text">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+      <input id="email_form" ng-keydown="check()" ng-blur="check()"  ng-disabled="vm.spam_block" ng-model="vm.email" type="email" placeholder="Your email (required)" ng-required="true">
+    </md-input-container>
+
+  <md-input-container class="md-block">
+          <label>Content</label>
+          <textarea id="content_form" ng-keydown="check()" ng-disabled="vm.spam_block" ng-blur="check()" ng-required="true" ng-model="vm.content" md-maxlength="140" rows="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+   <div ng-show="vm.spam_block" id="accept-format" class="error" ng-message="min">
+            Sorry, but you can't send an email right now. Spam protection here! try again in {{vm.minutes}} minutes
+          </div>
+      
+      <div id="progress" style="display: none">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+<div layout-align="center center" style="text-align: center;">
+<md-button ng-click="send()" ng-disabled="!vm.ready" class="md-raised md-primary">SEND</md-button>
+</div>
+
+ </div>
+</div>
+    
+  
+</div>
+</div>
+</div>
+
+</div>

@@ -1,0 +1,137 @@
+﻿<div ng-controller="imageController">
+
+    <div class="divide-40"></div>
+
+    <div class="center intro">
+        <h2>
+            Just upload an image and set parameters for
+            width and height.
+        </h2>
+    </div>
+
+    <div class="divide-80"></div>
+
+    <div class="center">
+
+        <div  style="border-radius: 10px; margin:auto; width: 40%" layout="row" layout-padding layout-margin layout-fill layout-sm="column">
+            <div flex>
+        <button id="image_file" class="md-button md-raised md-primary" type="file" ngf-select="uploadImage($file)"
+                ngf-min-height="1">
+            SELECT FILE
+        </button>
+
+        <md-input-container>
+            <div class="raised">
+                <input id="image_file_name" type="text" ng-model="vm.file.name"></input>
+            </div>
+        </md-input-container>
+
+        <div ng-show="vm.acceptableFormat && vm.isSizeValidate" id="accept-format" ng-message="min">
+            Actual parameters: width:{{vm.parameters.width}}px, height: {{vm.parameters.height}}px
+
+        </div>
+
+        <div class="divide-10"></div>
+
+        <div ng-show="vm.acceptableFormat && vm.isSizeValidate" id="accept-format" class="accept" ng-message="min">
+            File seems fine, now set new parameters!
+            <div class="divide-10"></div>
+        </div>
+        <div ng-show="vm.acceptableFormat == false" id="error-format" class="error" ng-message="min">
+            Wrong format, acceptable formats: .JPG, .PNG, .BMP
+        </div>
+        <div class="divide-10"></div>
+        <div ng-show="vm.isSizeValidate == false" id="error-format" class="error" ng-message="min">
+            File is too big, maximum size is 60mb
+        </div>
+
+        <div class="center-div">
+            <div flex-gt-sm="100">
+                <md-checkbox style="margin-top: 10px;" ng-disabled="!vm.acceptableFormat || vm.isSizeValidate == false"
+                             ng-model="vm.resizeHelper" aria-label="Checkbox 1">
+                    I want to use resize helper
+                </md-checkbox>
+            </div>
+        </div>
+
+        <div class="center-div">
+            <md-encodedContent layout-gt-sm="row" layout-padding>
+                <div class="center-div">
+                    <div ng-show="vm.resizeHelper == true">
+                        <md-slider-container>
+                            <span style="margin-right: 6%">Increase</span>
+                            <md-slider ng-disabled="vm.decreaseBy != '0'" flex min="0" max="200" ng-model="vm.increaseBy" aria-label="red" id="red-slider">
+                            </md-slider>
+                            <md-input-container>
+                                <input readonly flex type="text" ng-model="vm.increasedValue" aria-label="red"
+                                       aria-controls="red-slider" value="%">
+                            </md-input-container>
+                        </md-slider-container>
+
+                        <md-slider-container>
+                            <span style="margin-right: 6%">Decrease</span>
+                            <md-slider ng-disabled="vm.increaseBy != '0'" flex min="0" max="99" ng-model="vm.decreaseBy" aria-label="red" id="red-slider">
+                            </md-slider>
+                            <md-input-container>
+                                <input readonly flex type="text" ng-model="vm.decreasedValue" aria-label="red"
+                                       aria-controls="red-slider">
+                            </md-input-container>
+                        </md-slider-container>
+                    </div>
+
+                    <md-input-container>
+
+                        <label>Width</label>
+                        <input ng-disabled="!vm.acceptableFormat" ng-model="vm.parameters.new_width">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Height</label>
+                        <input ng-disabled="!vm.acceptableFormat" ng-model="vm.parameters.new_height">
+                    </md-input-container>
+                </div>
+            </md-encodedContent>
+        </div>
+
+        <div class="center-div">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label ng-hide="vm.parameter.new_format">Choose format for your new file: </label>
+                <div class="center-div">
+                    <md-select ng-disabled="!vm.acceptableFormat" style="width: 25%; margin: auto"
+                               ng-model="vm.extension">
+                        <md-option ng-repeat="format in vm.parameters.formats" value="{{format}}">
+                            {{format}}
+                        </md-option>
+                    </md-select>
+                </div>
+            </md-input-container>
+        </div>
+
+        <div class="center-div">
+            <button ng-click="startConvert()" ng-disabled="!vm.acceptableFormat"
+                    class="md-button md-raised md-primary raised-button">
+                UPLOAD
+            </button>
+        </div>
+
+        <div class="center-div">
+            <div ng-show="vm.converting" style="width: 20%" class="center-div container"
+                 ng-class="{'visible' : !vm.activated}">
+                <md-progress-linear md-mode="query"></md-progress-linear>
+                <div class="bottom-block">
+                    <span>Converting...</span>
+                </div>
+            </div>
+            <a ng-click="hideDownloadButton()" href="{{new_image}}" ng-show="token"
+               class="md-button md-raised md-primary raised-button">
+                DOWNLOAD
+            </a>
+        </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</div>

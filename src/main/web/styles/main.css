@@ -1,0 +1,53 @@
+
+.center {
+text-align: center;
+}
+
+.margin {
+	margin-top: 15px;
+}
+
+div .intro{
+	display: none;
+}
+
+div .center-div {
+	margin: auto;
+}
+
+.divide-20 {
+height: 20px;
+}
+
+.divide-40 {
+height: 40px;
+}
+
+
+.divide-60 {
+height: 60px;
+}
+
+
+.divide-80 {
+height: 80px;
+}
+
+div .raised-button {
+width: 13em;
+height: 3em;
+}
+
+div .raised {
+width: 15em;
+}
+
+div .error {
+	color: red;
+}
+
+div .accept {
+	color: green;
+}
+
+
